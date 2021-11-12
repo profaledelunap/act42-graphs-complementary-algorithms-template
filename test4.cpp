@@ -10,19 +10,21 @@ TEST_CASE("testing exercise 3", "[exercise3]")
 	unweightedDiGraph<string> myGraph(10);
 	stack<string> mySort;
 	int index = 0;
-	vector<string> sort = {"CDMX", "Valle de Bravo", "Tijuana", "Torreon", "Saltillo", "Monterrey", "Durango"};
+	vector<string> sort = {"CDMX", "Valle", "Monterrey", "Durango", "Saltillo", "Torreon", "Tijuana"};
 
 	myGraph.addVertex("Tijuana");
 	myGraph.addVertex("Saltillo");
 	myGraph.addVertex("Durango");
 	myGraph.addVertex("Torreon");
 	myGraph.addVertex("Monterrey");
+	myGraph.addVertex("CDMX");
+	myGraph.addVertex("Valle");
 
 	myGraph.addEdge("Monterrey", "Saltillo");
 	myGraph.addEdge("Saltillo", "Torreon");
 	myGraph.addEdge("Torreon", "Tijuana");
 	myGraph.addEdge("Monterrey", "Durango");
-	myGraph.addEdge("Durango", "Monterrey");
+	myGraph.addEdge("CDMX", "Valle");
 
 	myGraph.topologicalSort(mySort);
 
