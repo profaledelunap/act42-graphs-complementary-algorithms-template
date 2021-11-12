@@ -1,31 +1,44 @@
 #define CATCH_CONFIG_MAIN
 #include <iostream>
-#include <fstream>
 #include "catch.h"
-#include "activity.h"
+#include "unweightedDiGraph.h"
 
 using namespace std;
 
-TEST_CASE("testing exercise 2", "[exercise2]") {
-	int n, from, to;
-	ifstream input;
-	UListGraph<int> *graph;
+TEST_CASE("testing exercise 2", "[exercise2]")
+{
+	unweightedDiGraph<string> myGraph(10);
 
-	input.open("input2.txt");
-	input >> n;
-	graph = new UListGraph<int>(n);
+	myGraph.addVertex("Tijuana");
+	myGraph.addVertex("Saltillo");
+	myGraph.addVertex("Durango");
+	myGraph.addVertex("Torreon");
+	myGraph.addVertex("Monterrey");
+	myGraph.addVertex("CDMX");
+	myGraph.addVertex("Valle de Bravo");
 
-	while (1) {
-		input >> from >> to;
-		if (!from && !to) {
-			break;
-		}
-		graph->addEdge(from, to);
+	myGraph.addEdge("Monterrey", "Saltillo");
+	myGraph.addEdge("Saltillo", "Torreon");
+	myGraph.addEdge("Torreon", "Tijuana");
+	myGraph.addEdge("CDMX", "Valle de Bravo");
+
+	SECTION("Remove vertex Saltillo")
+	{
+		myGraph.removeVertex("Saltillo");
+		queue<string> adjacents;
+		myGraph.getAdjacents("Monterrety", adjacents);
+
+		REQUIRE(myGraph.getSize() == 6);
+		REQUIRE(adjacents.empty());
 	}
 
-	REQUIRE(topologicalSort(graph) == "[0 1 4 8 2 5 3 6 7 9 11 12 13 10 15 14 16 17]");
-	REQUIRE(isBipartite(graph) == false);
-	REQUIRE(isTree(graph) == false);
+	SECTION("Remove vertex Valle de Bravo")
+	{
+		myGraph.removeVertex("Valle de Bravo");
+		queue<string> adjacents;
+		myGraph.getAdjacents("CDMX", adjacents);
 
-	delete graph;
+		REQUIRE(myGraph.getSize() == 6);
+		REQUIRE(adjacents.empty());
+	}
 }

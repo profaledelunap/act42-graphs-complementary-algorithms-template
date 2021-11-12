@@ -1,31 +1,34 @@
 #define CATCH_CONFIG_MAIN
 #include <iostream>
-#include <fstream>
 #include "catch.h"
-#include "activity.h"
+#include "unweightedDiGraph.h"
 
 using namespace std;
 
-TEST_CASE("testing exercise 3", "[exercise3]") {
-	int n, from, to;
-	ifstream input;
-	UListGraph<int> *graph;
+TEST_CASE("testing exercise 3", "[exercise3]")
+{
+	unweightedDiGraph<string> myGraph(10);
+	stack<string> mySort;
+	int index = 0;
+	vector<string> sort = {"CDMX", "Valle de Bravo", "Tijuana", "Torreon", "Saltillo", "Monterrey", "Durango"};
 
-	input.open("input4.txt");
-	input >> n;
-	graph = new UListGraph<int>(n);
+	myGraph.addVertex("Tijuana");
+	myGraph.addVertex("Saltillo");
+	myGraph.addVertex("Durango");
+	myGraph.addVertex("Torreon");
+	myGraph.addVertex("Monterrey");
 
-	while (1) {
-		input >> from >> to;
-		if (!from && !to) {
-			break;
-		}
-		graph->addEdge(from, to);
+	myGraph.addEdge("Monterrey", "Saltillo");
+	myGraph.addEdge("Saltillo", "Torreon");
+	myGraph.addEdge("Torreon", "Tijuana");
+	myGraph.addEdge("Monterrey", "Durango");
+	myGraph.addEdge("Durango", "Monterrey");
+
+	myGraph.topologicalSort(mySort);
+
+	while (!mySort.empty())
+	{
+		REQUIRE(mySort.top() == sort[index++]);
+		mySort.pop();
 	}
-
-	REQUIRE(topologicalSort(graph) == "[1 4 3 2]");
-	REQUIRE(isBipartite(graph) == true);
-	REQUIRE(isTree(graph) == true);
-
-	delete graph;
 }
