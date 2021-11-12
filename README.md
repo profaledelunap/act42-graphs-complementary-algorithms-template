@@ -1,8 +1,11 @@
 ![Tec de Monterrey](images/logotecmty.png)
+
 # Act 4.2 - Grafos: Algoritmos complementarios
 
 ## <span style="color: rgb(26, 99, 169);">¿Qué tengo que hacer?</span>
-Accede a la siguiente liga: [Act. 4.2](https://classroom.github.com/a/-DEd3bmI) y acepta la tarea. Esto creará tu repositorio de trabajo. En él, encontrarás el archivo "activity.h" que deberás modificar para el desarrollo de esta actividad. Deberás colocar en la parte superior, en comentarios, tus datos. Por ejemplo:
+
+En este reposiorio encontrarás los archivos "unweightedDiGraph.h" y "DiGraphType.h", deberás modificar el archivo "DiGraphType.h" para el desarrollo de esta actividad. Deberás colocar en la parte superior, en comentarios, tus datos. Por ejemplo:
+
 ```
 // =========================================================
 // File: activity.h
@@ -11,48 +14,49 @@ Accede a la siguiente liga: [Act. 4.2](https://classroom.github.com/a/-DEd3bmI) 
 // =========================================================
 ```
 
-Diseña e implementa en forma <ins>forma individual</ins>, las funciones que resuelvan los problemas que se describen a continuación.
+Diseña e implementa, las funciones que resuelvan los problemas que se describen a continuación:
 
-Las funciones que debes implementar son:
+1. `void removeVertex(VertexType)`
+   Implementa una función para eliminar un vértice del grafo, debes considerar eliminar todos los arcos entrantes y salientes.
 
- 1. ``` template <class Vertex> void dfs2(Vertex v, const UnweightedGraph<Vertex>* graph, std::set<Vertex> &reached, std::stack<Vertex> &TS) ```
- Implementa la búsqueda en profundidad modifica vista en clase. Esta función la usurarás para resolver el siguiente problema.
+2. `void removeEdge(VertexType, VertexType)`
+   Implemente una función para eliminar un arco entre dos vértices del grafo.
 
-2. ```template <class Vertex> std::string topologicalSort(const UnweightedGraph<Vertex>* graph)```
-Regresa un *string* conteniendo el recorrido topológico (*topological sort*) del grafo *graph*. El *Topological Sort* de un Grafo Direccionado Acíclico (*Directed Acyclic Graph*, *DAG*) es un ordenamiento lineal de los vértices que aparecen en un *DAG* tal que si el vértice *u* aparece antes de *v* es porque existe un arco (*u* -> *v*) en el *DAG*. Cada *DAG* tiene al menos, y posiblemente más,  un *topological sort*.
+3. `bool searchPath(VertexType, VertexType)`
+   Implementa una función que regrese verdadero si existe un camino entre dos vértices.
 
-3. ```template <class Vertex> bool isBipartite(const UnweightedGraph<Vertex>* graph)```
-Regresa verdadero si el grafo es bipartita; falso en caso contrario. Un grafo es bipartita si los vértices del grafo pueden ser divididos en dos conjuntos disjuntos R y S tal que cada arco conecta a un vértice en R con un vértice en S.
+4. `void topologicalSort(stack<VertexType> &)`
+   Regresa un _stack_ conteniendo el orden topológico (_topological sort_) del grafo _graph_. El _Topological Sort_ de un Grafo Direccionado Acíclico (_Directed Acyclic Graph_, _DAG_) es un ordenamiento lineal de los vértices que aparecen en un _DAG_ tal que si el vértice _u_ aparece antes de _v_ es porque existe un arco (_u_ -> _v_) en el _DAG_. Cada _DAG_ tiene al menos, y posiblemente más _topological sorts_.
 
-4. ``` template  <class Vertex> bool isCyclic(Vertex v, const UnweightedGraph<Vertex>* graph,   std::set<Vertex> &reached, Vertex parent) ```
-Encuentra la raíz del árbol, que es el vértice sin aristas entrantes. Si no existe ningún nodo, devuelve falso. Si existe más de un nodo, entonces el gráfico no está conectado y también deberíamos devolver falso.
-
-5. ```template <class Vertex> bool isTree(const UnweightedGraph<Vertex>* graph)```
-Regresa verdadero si el grafo forma un árbol; falso en caso contrario. Para ello, debemos determinar que el grafo se acíclico, que no existe más que un vértice sin aristas entrantes y que esté conectado.
+5. `bool isCyclic()`
+   Encuentra la raíz del árbol, que es el vértice sin aristas entrantes. Si no existe ningún nodo, devuelve falso. Si existe más de un nodo, entonces el gráfico no está conectado y también deberíamos devolver falso.
 
 <br>Todas las funcionalidades deberán de estar correctamente alineadas y documentadas.&nbsp; Recuerda que todas las funcionalidades deberán pasar exitosamente todas las pruebas. Como parte de la documentación deberá incluirse la complejidad de cada una de ellas.
 
 Para probar tu implementación, ejecuta el comando:
+
 ```
 make
 ```
-Este comando compilará tu código y generará una serie de archivos de pruebas llamados "runTest#", donde # será un número de prueba. Para ejecutar prueba, solo deberás ejecutar el archivos correcto. Por ejemplo, si quiere revisar si mi código cumple con la prueba número 3, deberías ejecutar:
+
+Este comando compilará tu código y generará una serie de pruebas. Para ejecutar cierta prueba _X_, deberás compilar tu código y dicho archivo usando el comando _make testX_. Por ejemplo, si quiere revisar si tu código cumple con la prueba número 3, deberías ejecutar:
+
 ```
-./runTest3
+make test3
 ```
 
 ## <span style="color: rgb(26, 99, 169);">**¿Bajo qué criterios se evalúa mi evidencia?**</span>
 
 - **80%** - Para cada una de las funcionalidades se evaluará:
 
-    - **Excelente (80%)** - pasa correctamente todos los casos de prueba.
-    - **Muy Bien (60%)** - pasa correctamente el 75% de los casos de prueba.
-    - **Bien (40%)** - pasa correctamente el 50% de los casos de prueba.
-    - **Insuficiente (20%)** - pasa correctamente menos del 50% de los casos de prueba.
-
+  - **Excelente (80%)** - pasa correctamente todos los casos de prueba.
+  - **Muy Bien (60%)** - pasa correctamente el 75% de los casos de prueba.
+  - **Bien (40%)** - pasa correctamente el 50% de los casos de prueba.
+  - **Insuficiente (20%)** - pasa correctamente menos del 50% de los casos de prueba.
 
 - **10%** - El código deberá seguir los lineamientos estipulados en el estándar de codificación: <span class="instructure_file_holder link_holder">[liga_estándar_codificación](estandar.pdf)</span>
 - **10%** - Se respetan los nombres de las funciones en la aplicación.
 
 ## <span style="color: rgb(26, 99, 169);">**¿Dónde la entrego?**</span>
-Cuando hayas pasado todas las pruebas, recuerda publicar el código en tu repositorio (*git push*).
+
+Cuando hayas pasado todas las pruebas, recuerda publicar el código en tu repositorio (_git push_).
