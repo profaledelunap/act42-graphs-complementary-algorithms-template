@@ -170,6 +170,7 @@ int DiGraphType<VertexType, EdgeType>::getSize()
 template <class VertexType, class EdgeType>
 bool DiGraphType<VertexType, EdgeType>::searchPath(VertexType startVertex, VertexType endVertex)
 {
+    return true;
 }
 
 /*
@@ -190,6 +191,7 @@ void DiGraphType<VertexType, EdgeType>::topologicalSort(stack<VertexType> &sort)
 template <class VertexType, class EdgeType>
 bool DiGraphType<VertexType, EdgeType>::isCyclic()
 {
+    return false;
 }
 
 /*
@@ -202,6 +204,7 @@ bool DiGraphType<VertexType, EdgeType>::isCyclic()
 template <class VertexType, class EdgeType>
 bool DiGraphType<VertexType, EdgeType>::BFS(VertexType startVertex, VertexType endVertex)
 {
+    return false;
 }
 
 /*
@@ -214,6 +217,7 @@ bool DiGraphType<VertexType, EdgeType>::BFS(VertexType startVertex, VertexType e
 template <class VertexType, class EdgeType>
 bool DiGraphType<VertexType, EdgeType>::DFS(VertexType startVertex, VertexType endVertex)
 {
+    return false;
 }
 
 /*
@@ -239,4 +243,5 @@ void DiGraphType<VertexType, EdgeType>::DFS(VertexType vertex, vector<bool> &vis
 template <class VertexType, class EdgeType>
 bool DiGraphType<VertexType, EdgeType>::DFS(VertexType vertex, vector<int> &colors)
 {
+    return false;
 }

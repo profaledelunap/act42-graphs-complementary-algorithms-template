@@ -26,6 +26,8 @@ TEST_CASE("testing exercise 3", "[exercise3]")
 
 	myGraph.topologicalSort(mySort);
 
+	REQUIRE(!mySort.empty());
+
 	while (!mySort.empty())
 	{
 		REQUIRE(mySort.top() == sort[index++]);
