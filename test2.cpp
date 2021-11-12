@@ -26,7 +26,7 @@ TEST_CASE("testing exercise 2", "[exercise2]")
 	{
 		myGraph.removeVertex("Saltillo");
 		queue<string> adjacents;
-		myGraph.getAdjacents("Monterrety", adjacents);
+		myGraph.getAdjacents("Monterrey", adjacents);
 
 		REQUIRE(myGraph.getSize() == 6);
 		REQUIRE(adjacents.empty());
